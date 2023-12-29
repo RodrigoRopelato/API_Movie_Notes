@@ -13,6 +13,12 @@ function ensureAuthenticated(request, response, next){
 
     try {
         const {sub: user_id} = verify(token, authConfig.jwt.secret);
+
+        resquest.user = {
+            id: Number(user_id)
+        }
+
+        return next();
     } catch {
         throw new AppError("JWT Token inválido",401)
     }
