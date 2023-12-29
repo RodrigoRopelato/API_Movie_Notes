@@ -15,7 +15,7 @@ class UserAvatarController {
             throw new AppError("Somente usuários autenticados podem mudar o avatar",401);
         }
 
-        if(use.avatar){
+        if(user.avatar){
             await diskStorage.deleteFile(user.avatar);
         }
 
