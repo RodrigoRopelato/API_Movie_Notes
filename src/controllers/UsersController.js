@@ -27,7 +27,7 @@ class UserController {
         const {name, email, password, old_password} = request.body;
         const user_id = request.user.id;
 
-        const user = await knex("users").select('*').where({user_id}).first();
+        const user = await knex("users").select('*').where({id:user_id}).first();
     
         
         if(!user){
@@ -58,7 +58,7 @@ class UserController {
 
             user.password = await hash(password, 8);;
         
-            await knex("users").where({user_id}).update({
+            await knex("users").where({id:user_id}).update({
                 name:user.name,
                 email:user.email,
                 password:user.password

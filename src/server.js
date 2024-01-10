@@ -1,10 +1,13 @@
 require("express-async-errors");
 const AppError = require("./utils/AppError.js");
+const cors = require("cors");
 const express = require("express");
+
 const routes = require("./routes");
 const uploadConfig = require("./configs/upload");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER));
@@ -27,5 +30,5 @@ app.use((error,request,response,next)=>{
     
 });
 
-const PORT = 3334;
+const PORT = 3333;
 app.listen(PORT, ()=>console.log(`Server is running on Port ${PORT}`));

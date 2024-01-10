@@ -13,6 +13,8 @@ movieRoutes.post("/", movieNotesController.create);
 movieRoutes.get("/:id", movieNotesController.show);
 movieRoutes.get("/", movieNotesController.index);
 movieRoutes.delete("/:id",movieNotesController.delete);
+movieRoutes.put("/:id",movieNotesController.update);
+
 
 
 
